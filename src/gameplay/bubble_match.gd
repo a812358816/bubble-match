@@ -34,7 +34,7 @@ const COMBO_WINDOW_MSEC: int = 2000
 const ROW_SPAWN_INTERVAL: float = 10.0
 const COMBO_COLORS: Dictionary = {0: Color.WHITE, 1: Color(0.5, 1.0, 0.5), 2: Color(1.0, 0.9, 0.3), 3: Color(1.0, 0.5, 0.2)}
 const SPECIAL_THRESHOLD: int = 5
-const SHUFFLE_COUNT: int = 2
+const SHUFFLE_COUNT: int = 3
 
 
 func _ready() -> void:

@@ -17,11 +17,6 @@ extends Node
 
 
 func _ready() -> void:
-	# Emoji fallback — ensures 🔀🏆🥇🥈🥉💣🌈 render correctly
-	if _ui.theme.default_font:
-		var emoji_font := load("res://assets/fonts/emoji.ttf") as FontFile
-		if emoji_font:
-			_ui.theme.default_font.fallbacks = [emoji_font]
 	_bubble_match.score_changed.connect(_on_score_changed)
 	_bubble_match.time_updated.connect(_on_time_updated)
 	_bubble_match.round_ended.connect(_on_round_ended)
@@ -50,7 +45,8 @@ func _on_start_pressed() -> void:
 	_start_btn.visible = false
 	_rank_btn.visible = false
 	_shuffle_btn.visible = true
-	_shuffle_btn.text = "🔀 洗牌 (2)"
+	_shuffle_btn.disabled = false
+	_shuffle_btn.text = "🔀 洗牌 (3)"
 	_time_label.visible = true
 	_score_label.visible = true
 	_game_over_panel.visible = false
@@ -104,8 +100,6 @@ func _on_shuffle_pressed() -> void:
 
 
 func _on_shuffle_count_changed(remaining: int) -> void:
-	if remaining > 0:
-		_shuffle_btn.text = "🔀 洗牌 (%d)" % remaining
-		_shuffle_btn.visible = true
-	else:
-		_shuffle_btn.visible = false
+	_shuffle_btn.text = "🔀 洗牌 (%d)" % remaining
+	_shuffle_btn.disabled = remaining <= 0
+	_shuffle_btn.visible = true
