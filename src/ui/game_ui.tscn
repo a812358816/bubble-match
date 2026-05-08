@@ -1,0 +1,250 @@
+[gd_scene format=3 uid="uid://bcjldmp1dpfrk"]
+
+[sub_resource type="LabelSettings" id="timer_label_settings"]
+font_size = 44
+font_color = Color(0.2, 0.1, 0.25, 1)
+
+[sub_resource type="LabelSettings" id="label_settings"]
+font_size = 28
+font_color = Color(0.2, 0.1, 0.25, 1)
+
+[sub_resource type="StyleBoxFlat" id="btn_style"]
+bg_color = Color(0.8, 0.4, 0.85, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="overlay_style"]
+bg_color = Color(0.3, 0.05, 0.35, 0.85)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="overlay_label_settings"]
+font_size = 32
+font_color = Color(1, 0.95, 0.7, 1)
+
+[node name="GameUI" type="Control" unique_id=762324265]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TimeLabel" type="Label" parent="." unique_id=288022706]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 240.0
+offset_bottom = 70.0
+text = "时间: 90"
+label_settings = SubResource("timer_label_settings")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1039832863]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 52.0
+grow_horizontal = 0
+text = "分数: 0"
+label_settings = SubResource("label_settings")
+horizontal_alignment = 2
+
+[node name="StartButton" type="Button" parent="." unique_id=2133504949]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -35.0
+offset_right = 120.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("btn_style")
+text = "开始游戏"
+
+[node name="ShuffleButton" type="Button" parent="." unique_id=433220519]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_top = 90.0
+offset_right = -12.0
+offset_bottom = 126.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("btn_style")
+text = "🔀 洗牌 (2)"
+
+[node name="RankButton" type="Button" parent="." unique_id=978577930]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("btn_style")
+text = "🏆 排行榜"
+
+[node name="RankPanel" type="Panel" parent="." unique_id=1653185595]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("overlay_style")
+
+[node name="RankTitleLabel" type="Label" parent="RankPanel" unique_id=1052417806]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -220.0
+offset_right = 180.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "排行榜"
+label_settings = SubResource("overlay_label_settings")
+horizontal_alignment = 1
+
+[node name="RankListLabel" type="Label" parent="RankPanel" unique_id=537651237]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -150.0
+offset_right = 180.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "..."
+label_settings = SubResource("overlay_label_settings")
+horizontal_alignment = 1
+
+[node name="RankBackButton" type="Button" parent="RankPanel" unique_id=565983897]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 120.0
+offset_right = 80.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("btn_style")
+text = "返回"
+
+[node name="GameOverPanel" type="Panel" parent="." unique_id=884535005]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("overlay_style")
+
+[node name="GameOverLabel" type="Label" parent="GameOverPanel" unique_id=1951246817]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -240.0
+offset_right = 180.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "时间到!"
+label_settings = SubResource("overlay_label_settings")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="GameOverPanel" unique_id=806483924]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -190.0
+offset_right = 180.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "得分：0"
+label_settings = SubResource("overlay_label_settings")
+horizontal_alignment = 1
+
+[node name="LeaderboardLabel" type="Label" parent="GameOverPanel" unique_id=521180563]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -140.0
+offset_right = 180.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "🏆 排行榜"
+label_settings = SubResource("overlay_label_settings")
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverPanel" unique_id=1663203442]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 155.0
+offset_right = 120.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("btn_style")
+text = "再玩一次"

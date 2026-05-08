@@ -1,0 +1,30 @@
+# Godot
+.godot/
+*.translation
+export_presets.cfg
+
+# Imported assets (cache only - .import files are import configs, commit those)
+.import/
+
+# Build output
+build/
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.env
+*.pck

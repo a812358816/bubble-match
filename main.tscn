@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://src/main.gd" id="1"]
+[ext_resource type="Script" path="res://src/gameplay/bubble_match.gd" id="2"]
+[ext_resource type="PackedScene" path="res://src/ui/game_ui.tscn" id="3"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1")
+
+[node name="BubbleMatch" type="Node2D" parent="."]
+script = ExtResource("2")
+
+[node name="Timer" type="Timer" parent="BubbleMatch"]
+wait_time = 1.0
+one_shot = false
+
+[node name="GameUI" parent="." instance=ExtResource("3")]
