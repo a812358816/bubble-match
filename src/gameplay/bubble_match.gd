@@ -396,7 +396,7 @@ func _process_match(group: Array[Vector2i]) -> void:
 	_apply_gravity()
 
 	# 在大组消除位置放置特殊气泡
-	if should_drop_special:
+	if should_drop_special and not _has_special_on_grid():
 		# 如果目标位置没被 gravity 清空，找最近的空位
 		if _grid[center_col][center_row] != null:
 			var found := false
@@ -467,6 +467,14 @@ func _check_difficulty() -> void:
 					_active_colors.append(c)
 					_show_floating_text(Vector2(200, 100), "新颜色!", Color(1.0, 0.8, 0.2))
 					break
+
+
+func _has_special_on_grid() -> bool:
+	for col in range(grid_cols):
+		for row in range(grid_rows):
+			if _grid[col][row] != null and _grid[col][row].get("type", "normal") != "normal":
+				return true
+	return false
 
 
 func _roll_special_drop(group_size: int) -> bool:
