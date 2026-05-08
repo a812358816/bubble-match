@@ -4,11 +4,11 @@
 
 [sub_resource type="LabelSettings" id="timer_label_settings"]
 font_size = 44
-font_color = Color(0.2, 0.1, 0.25, 1)
+font_color = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="label_settings"]
 font_size = 28
-font_color = Color(0.2, 0.1, 0.25, 1)
+font_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="btn_style"]
 bg_color = Color(0.8, 0.4, 0.85, 1)
@@ -42,7 +42,7 @@ mouse_filter = 2
 layout_mode = 1
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 240.0
+offset_right = 150.0
 offset_bottom = 70.0
 text = "时间: 90"
 label_settings = SubResource("timer_label_settings")
@@ -52,7 +52,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -240.0
+offset_left = -140.0
 offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 52.0

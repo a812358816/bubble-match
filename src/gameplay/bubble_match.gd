@@ -8,12 +8,15 @@ signal shuffle_count_changed(remaining: int)
 const BUBBLE_SCENE := preload("res://src/gameplay/bubble.tscn")
 
 @export var grid_cols: int = 8
-@export var grid_rows: int = 8
-@export var bubble_size: float = 60.0
+@export var grid_rows: int = 6
+@export var max_bubble_size: float = 140.0
+@export var min_bubble_size: float = 50.0
 @export var min_match: int = 3
-@export var offset_x: float = 30.0
-@export var offset_y: float = 30.0
+@export var offset_x: float = 12.0
+@export var offset_y: float = 12.0
 @export var round_seconds: float = 60.0
+
+var _actual_bubble_size: float = 80.0
 
 var _grid: Array = []
 var _bubble_nodes: Array = []
@@ -39,6 +42,18 @@ const SHUFFLE_COUNT: int = 3
 
 func _ready() -> void:
 	$Timer.timeout.connect(_on_timer_timeout)
+	get_viewport().size_changed.connect(_recalculate_bubble_size)
+	_recalculate_bubble_size()
+
+
+func _recalculate_bubble_size() -> void:
+	var screen := get_viewport().get_visible_rect().size
+	# Leave room for UI labels at top (~130px) and side margins
+	var usable_w = screen.x - offset_x * 2
+	var usable_h = screen.y - offset_y * 2 - 100.0
+	var cell_w = usable_w / grid_cols
+	var cell_h = usable_h / grid_rows
+	_actual_bubble_size = clampf(min(cell_w, cell_h), min_bubble_size, max_bubble_size)
 
 
 func _make_grid_data(color: String = "", bubble_type: String = "normal") -> Dictionary:
@@ -75,7 +90,7 @@ func _create_bubble(col: int, row: int, data: Dictionary) -> Node2D:
 	var b := BUBBLE_SCENE.instantiate()
 	b.bubble_color = data["color"]
 	b.bubble_type = data.get("type", "normal")
-	b.bubble_size = bubble_size
+	b._actual_bubble_size = _actual_bubble_size
 	b.grid_pos = Vector2i(col, row)
 	b.position = _grid_to_world(col, row)
 	b.bubble_clicked.connect(_on_bubble_clicked)
@@ -101,10 +116,10 @@ func _clear_bubble_nodes() -> void:
 
 
 func _grid_to_world(col: int, row: int) -> Vector2:
-	var grid_w: float = grid_cols * bubble_size
-	var grid_h: float = grid_rows * bubble_size
+	var grid_w: float = grid_cols * _actual_bubble_size
+	var grid_h: float = grid_rows * _actual_bubble_size
 	var screen := get_viewport().get_visible_rect().size
-	return Vector2((screen.x - grid_w) / 2.0 + col * bubble_size + offset_x, (screen.y - grid_h) / 2.0 + row * bubble_size + offset_y)
+	return Vector2((screen.x - grid_w) / 2.0 + col * _actual_bubble_size + _actual_bubble_size / 2.0, (screen.y - grid_h) / 2.0 + row * _actual_bubble_size + _actual_bubble_size / 2.0 + 30.0)
 
 
 func _is_valid_cell(col: int, row: int) -> bool:
@@ -112,6 +127,7 @@ func _is_valid_cell(col: int, row: int) -> bool:
 
 
 func start_round() -> void:
+	_recalculate_bubble_size()
 	_score = 0
 	_time_left = round_seconds
 	_running = true
@@ -171,7 +187,7 @@ func _spawn_row() -> void:
 
 		_grid[col][0] = _make_grid_data()
 		var b := _create_bubble(col, 0, _grid[col][0])
-		b.position = _grid_to_world(col, 0) + Vector2(0, -bubble_size)
+		b.position = _grid_to_world(col, 0) + Vector2(0, -_actual_bubble_size)
 		_bubble_nodes[col][0] = b
 		var tw := create_tween()
 		tw.tween_property(b, "position", _grid_to_world(col, 0), 0.35).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)

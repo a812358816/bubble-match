@@ -34,8 +34,6 @@ func _ready() -> void:
 
 func _setup_ui() -> void:
 	# Button icons — generated programmatically
-	for btn in [_start_btn, _shuffle_btn, _rank_btn, _restart_btn, _rank_back_btn]:
-		btn.icon_max_width = 24
 	_start_btn.icon = _make_icon("play")
 	_shuffle_btn.icon = _make_icon("shuffle")
 	_rank_btn.icon = _make_icon("rank")
@@ -44,7 +42,7 @@ func _setup_ui() -> void:
 
 	# Time label badge
 	var time_bg := StyleBoxFlat.new()
-	time_bg.bg_color = Color(0.12, 0.06, 0.22, 0.88)
+	time_bg.bg_color = Color(0.35, 0.2, 0.5, 0.85)
 	time_bg.set_corner_radius_all(12)
 	time_bg.content_margin_left = 14
 	time_bg.content_margin_right = 14
@@ -54,7 +52,7 @@ func _setup_ui() -> void:
 
 	# Score label badge
 	var score_bg := StyleBoxFlat.new()
-	score_bg.bg_color = Color(0.12, 0.06, 0.22, 0.88)
+	score_bg.bg_color = Color(0.35, 0.2, 0.5, 0.85)
 	score_bg.set_corner_radius_all(12)
 	score_bg.content_margin_left = 14
 	score_bg.content_margin_right = 14
