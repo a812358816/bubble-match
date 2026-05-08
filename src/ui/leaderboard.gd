@@ -62,9 +62,9 @@ func get_rank_text() -> String:
 		var e: Dictionary = scores[i]
 		var medal := ""
 		match i:
-			0: medal = "🥇"
-			1: medal = "🥈"
-			2: medal = "🥉"
+			0: medal = "[1]"
+			1: medal = "[2]"
+			2: medal = "[3]"
 			_: medal = "  %d" % (i + 1)
 		lines.append("%s  %s  %d分" % [medal, e.name, e.score])
 	return "\n".join(lines)

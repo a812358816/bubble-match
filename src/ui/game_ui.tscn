@@ -91,7 +91,7 @@ offset_bottom = 126.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("btn_style")
-text = "🔀 洗牌 (2)"
+text = "洗牌 (2)"
 
 [node name="RankButton" type="Button" parent="." unique_id=978577930]
 layout_mode = 1
@@ -108,7 +108,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("btn_style")
-text = "🏆 排行榜"
+text = "排行榜"
 
 [node name="RankPanel" type="Panel" parent="." unique_id=1653185595]
 visible = false
@@ -231,7 +231,7 @@ offset_right = 180.0
 offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "🏆 排行榜"
+text = "排行榜"
 label_settings = SubResource("overlay_label_settings")
 horizontal_alignment = 1
 
