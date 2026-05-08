@@ -17,6 +17,11 @@ extends Node
 
 
 func _ready() -> void:
+	# Emoji fallback — ensures 🔀🏆🥇🥈🥉💣🌈 render correctly
+	if theme.default_font:
+		var emoji_font := load("res://assets/fonts/emoji.ttf") as FontFile
+		if emoji_font:
+			theme.default_font.fallbacks = [emoji_font]
 	_bubble_match.score_changed.connect(_on_score_changed)
 	_bubble_match.time_updated.connect(_on_time_updated)
 	_bubble_match.round_ended.connect(_on_round_ended)
