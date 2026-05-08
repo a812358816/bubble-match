@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bcjldmp1dpfrk"]
+[gd_scene load_steps=7 format=3 uid="uid://bcjldmp1dpfrk"]
+
+[ext_resource type="Theme" uid="uid://theme_bubble_match" path="res://resources/game_theme.tres" id="1"]
 
 [sub_resource type="LabelSettings" id="timer_label_settings"]
 font_size = 44
@@ -27,6 +29,7 @@ font_size = 32
 font_color = Color(1, 0.95, 0.7, 1)
 
 [node name="GameUI" type="Control" unique_id=762324265]
+theme = ExtResource("1")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

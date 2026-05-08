@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://theme_bubble_match"]
+
+[ext_resource type="FontFile" uid="uid://dwn0ct3kfvm8y" path="res://assets/fonts/NotoSansSC-Regular.ttf" id="1"]
+
+[resource]
+default_font = ExtResource(1)
