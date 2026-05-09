@@ -9,12 +9,13 @@ const BUBBLE_SCENE := preload("res://src/gameplay/bubble.tscn")
 
 @export var grid_cols: int = 8
 @export var grid_rows: int = 6
-@export var max_bubble_size: float = 140.0
+@export var max_bubble_size: float = 160.0
 @export var min_bubble_size: float = 50.0
 @export var min_match: int = 3
-@export var offset_x: float = 12.0
-@export var offset_y: float = 12.0
+@export var offset_x: float = 24.0
+@export var offset_y: float = 24.0
 @export var round_seconds: float = 60.0
+@export var spacing_factor: float = 0.82
 
 var _actual_bubble_size: float = 80.0
 
@@ -35,7 +36,7 @@ var _next_row_spawn: float = 0.0
 var _shuffle_remaining: int = 0
 const COMBO_WINDOW_MSEC: int = 2000
 const ROW_SPAWN_INTERVAL: float = 10.0
-const COMBO_COLORS: Dictionary = {0: Color.WHITE, 1: Color(0.5, 1.0, 0.5), 2: Color(1.0, 0.9, 0.3), 3: Color(1.0, 0.5, 0.2)}
+const COMBO_COLORS: Dictionary = {0: Color.WHITE, 1: Color(0.55, 0.95, 0.65), 2: Color(1.0, 0.78, 0.2), 3: Color(1.0, 0.35, 0.55)}
 const SPECIAL_THRESHOLD: int = 5
 const SHUFFLE_COUNT: int = 3
 
@@ -48,12 +49,12 @@ func _ready() -> void:
 
 func _recalculate_bubble_size() -> void:
 	var screen := get_viewport().get_visible_rect().size
-	# Leave room for UI labels at top (~130px) and side margins
 	var usable_w = screen.x - offset_x * 2
-	var usable_h = screen.y - offset_y * 2 - 100.0
+	var usable_h = screen.y - offset_y * 2 - 80.0
 	var cell_w = usable_w / grid_cols
 	var cell_h = usable_h / grid_rows
-	_actual_bubble_size = clampf(min(cell_w, cell_h), min_bubble_size, max_bubble_size)
+	# spacing_factor < 1 means bubbles overlap, so we can make them bigger
+	_actual_bubble_size = clampf(min(cell_w, cell_h) / spacing_factor, min_bubble_size, max_bubble_size)
 
 
 func _make_grid_data(color: String = "", bubble_type: String = "normal") -> Dictionary:
@@ -116,10 +117,11 @@ func _clear_bubble_nodes() -> void:
 
 
 func _grid_to_world(col: int, row: int) -> Vector2:
-	var grid_w: float = grid_cols * _actual_bubble_size
-	var grid_h: float = grid_rows * _actual_bubble_size
+	var step: float = _actual_bubble_size * spacing_factor
+	var grid_w: float = grid_cols * step
+	var grid_h: float = grid_rows * step
 	var screen := get_viewport().get_visible_rect().size
-	return Vector2((screen.x - grid_w) / 2.0 + col * _actual_bubble_size + _actual_bubble_size / 2.0, (screen.y - grid_h) / 2.0 + row * _actual_bubble_size + _actual_bubble_size / 2.0 + 30.0)
+	return Vector2((screen.x - grid_w) / 2.0 + col * step + step / 2.0, (screen.y - grid_h) / 2.0 + row * step + step / 2.0 + 30.0)
 
 
 func _is_valid_cell(col: int, row: int) -> bool:
@@ -563,12 +565,12 @@ func _acquire_float_label() -> Label:
 	var lbl := Label.new()
 	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	lbl.add_theme_font_size_override("font_size", 48)
+	lbl.add_theme_font_size_override("font_size", 64)
 	lbl.add_theme_color_override("font_outline_color", Color.BLACK)
-	lbl.add_theme_constant_override("outline_size", 3)
-	lbl.size = Vector2(80, 40)
+	lbl.add_theme_constant_override("outline_size", 4)
+	lbl.size = Vector2(100, 50)
 	lbl.visible = false
-	get_tree().current_scene.add_child(lbl)
+	get_tree().current_scene.get_node("FloatLayer").add_child(lbl)
 	_float_labels.append(lbl)
 	return lbl
 
