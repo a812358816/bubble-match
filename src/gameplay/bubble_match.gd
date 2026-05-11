@@ -563,6 +563,7 @@ func _acquire_float_label() -> Label:
 			lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			return lbl
 	var lbl := Label.new()
+	lbl.theme = preload("res://resources/game_theme.tres")
 	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	lbl.add_theme_font_size_override("font_size", 64)
