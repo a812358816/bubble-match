@@ -7,15 +7,15 @@ signal shuffle_count_changed(remaining: int)
 
 const BUBBLE_SCENE := preload("res://src/gameplay/bubble.tscn")
 
-@export var grid_cols: int = 8
-@export var grid_rows: int = 6
+@export var grid_cols: int = 6
+@export var grid_rows: int = 8
 @export var max_bubble_size: float = 160.0
 @export var min_bubble_size: float = 50.0
 @export var min_match: int = 3
 @export var offset_x: float = 24.0
 @export var offset_y: float = 24.0
 @export var round_seconds: float = 60.0
-@export var spacing_factor: float = 0.82
+@export var spacing_factor: float = 0.72
 
 var _actual_bubble_size: float = 80.0
 
@@ -257,7 +257,7 @@ func _process_bomb(pos: Vector2i) -> void:
 
 	var bonus := clampi(affected.size() - 2, 1, 5)
 	_add_time(bonus)
-	_show_floating_text(_grid_to_world(pos.x, pos.y), "◆ 炸弹 +%ds" % bonus, Color(1.0, 0.5, 0.1))
+	_show_floating_text(_grid_to_world(pos.x, pos.y), "炸弹 +%ds" % bonus, Color(1.0, 0.5, 0.1))
 
 	_combo = 1
 	_last_match_msec = Time.get_ticks_msec()
@@ -306,7 +306,7 @@ func _process_rainbow(pos: Vector2i) -> void:
 
 	var bonus: int = clampi(affected.size() / 3, 2, 8)
 	_add_time(bonus)
-	_show_floating_text(_grid_to_world(pos.x, pos.y), "◇ 彩虹 +%ds" % bonus, Color(1.0, 0.3, 0.8))
+	_show_floating_text(_grid_to_world(pos.x, pos.y), "彩虹 +%ds" % bonus, Color(1.0, 0.3, 0.8))
 
 	_combo = 1
 	_last_match_msec = Time.get_ticks_msec()
@@ -536,7 +536,7 @@ func do_shuffle() -> void:
 			if _grid[col][row] != null:
 				_bubble_nodes[col][row] = _create_bubble(col, row, _grid[col][row])
 
-	_show_floating_text(Vector2(200, 150), "↻ 洗牌 (%d)" % _shuffle_remaining, Color(0.6, 0.8, 1.0))
+	_show_floating_text(Vector2(200, 150), "洗牌 (%d)" % _shuffle_remaining, Color(0.6, 0.8, 1.0))
 
 
 func _show_floating_text(world_pos: Vector2, text: String, clr: Color) -> void:

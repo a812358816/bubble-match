@@ -81,7 +81,7 @@ func _on_start_pressed() -> void:
 	_rank_btn.visible = false
 	_shuffle_btn.visible = true
 	_shuffle_btn.disabled = false
-	_shuffle_btn.text = "↻ 洗牌 (3)"
+	_shuffle_btn.text = "洗牌 (3)"
 	_time_label.visible = true
 	_score_label.visible = true
 	_game_over_panel.visible = false
@@ -95,7 +95,7 @@ func _on_restart_pressed() -> void:
 
 
 func _on_score_changed(new_score: int) -> void:
-	_score_label.text = "★ %d" % new_score
+	_score_label.text = "%d 分" % new_score
 
 
 func _on_time_updated(seconds: int) -> void:
@@ -152,6 +152,6 @@ func _on_shuffle_pressed() -> void:
 
 
 func _on_shuffle_count_changed(remaining: int) -> void:
-	_shuffle_btn.text = "↻ 洗牌 (%d)" % remaining
+	_shuffle_btn.text = "洗牌 (%d)" % remaining
 	_shuffle_btn.disabled = remaining <= 0
 	_shuffle_btn.visible = true
