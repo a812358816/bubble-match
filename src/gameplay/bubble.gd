@@ -6,7 +6,6 @@ signal bubble_clicked(bubble: Node2D)
 @export var bubble_size: float = 60.0
 @export var bubble_type: String = "normal"
 
-var _actual_bubble_size: float = 60.0
 
 const COLORS := {
 	"pink": Color("#FF69B4"),

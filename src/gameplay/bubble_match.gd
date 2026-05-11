@@ -304,7 +304,7 @@ func _process_rainbow(pos: Vector2i) -> void:
 	await get_tree().create_timer(0.3).timeout
 	AudioManager.play_pop(affected.size())
 
-	var bonus: int = clampi(affected.size() / 3, 2, 8)
+	var bonus: int = clampi(int(affected.size() / 3.0), 2, 8)
 	_add_time(bonus)
 	_show_floating_text(_grid_to_world(pos.x, pos.y), "彩虹 +%ds" % bonus, Color(1.0, 0.3, 0.8))
 
