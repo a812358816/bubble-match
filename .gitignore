@@ -1,7 +1,6 @@
 # Godot
 .godot/
 *.translation
-export_presets.cfg
 
 # Imported assets (cache only - .import files are import configs, commit those)
 .import/
