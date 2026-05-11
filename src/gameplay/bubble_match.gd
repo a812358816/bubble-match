@@ -7,15 +7,15 @@ signal shuffle_count_changed(remaining: int)
 
 const BUBBLE_SCENE := preload("res://src/gameplay/bubble.tscn")
 
-@export var grid_cols: int = 5
-@export var grid_rows: int = 7
-@export var max_bubble_size: float = 500.0
+@export var grid_cols: int = 8
+@export var grid_rows: int = 10
+@export var max_bubble_size: float = 600.0
 @export var min_bubble_size: float = 60.0
 @export var min_match: int = 3
-@export var offset_x: float = 8.0
-@export var offset_y: float = 8.0
+@export var offset_x: float = 20.0
+@export var offset_y: float = 20.0
 @export var round_seconds: float = 60.0
-@export var spacing_factor: float = 0.16
+@export var spacing_factor: float = 0.15
 
 var _actual_bubble_size: float = 80.0
 
@@ -50,7 +50,7 @@ func _ready() -> void:
 func _recalculate_bubble_size() -> void:
 	var screen := get_viewport().get_visible_rect().size
 	var usable_w = screen.x - offset_x * 2
-	var usable_h = screen.y - offset_y * 2 - 40.0
+	var usable_h = screen.y - offset_y * 2 - 60.0
 	var cell_w = usable_w / grid_cols
 	var cell_h = usable_h / grid_rows
 	# spacing_factor < 1 means bubbles overlap, so we can make them bigger
