@@ -7,8 +7,8 @@ signal shuffle_count_changed(remaining: int)
 
 const BUBBLE_SCENE := preload("res://src/gameplay/bubble.tscn")
 
-@export var grid_cols: int = 8
-@export var grid_rows: int = 10
+@export var grid_cols: int = 10
+@export var grid_rows: int = 12
 @export var max_bubble_size: float = 650.0
 @export var min_bubble_size: float = 60.0
 @export var min_match: int = 3
