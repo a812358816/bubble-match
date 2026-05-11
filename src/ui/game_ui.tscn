@@ -3,18 +3,18 @@
 [ext_resource type="Theme" uid="uid://theme_bubble_match" path="res://resources/game_theme.tres" id="1"]
 
 [sub_resource type="LabelSettings" id="timer_label_settings"]
-font_size = 44
-font_color = Color(1, 1, 1, 1)
-shadow_color = Color(0.4, 0.15, 0.5, 0.35)
-shadow_offset = Vector2(1, 2)
-shadow_size = 2
+font_size = 46
+font_color = Color(1, 0.9, 1, 1)
+shadow_color = Color(0.3, 0.05, 0.4, 0.4)
+shadow_offset = Vector2(2, 3)
+shadow_size = 4
 
 [sub_resource type="LabelSettings" id="label_settings"]
-font_size = 28
-font_color = Color(1, 1, 1, 1)
-shadow_color = Color(0.4, 0.15, 0.5, 0.3)
-shadow_offset = Vector2(1, 1)
-shadow_size = 2
+font_size = 30
+font_color = Color(1, 0.95, 0.7, 1)
+shadow_color = Color(0.45, 0.2, 0.05, 0.35)
+shadow_offset = Vector2(1, 2)
+shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id="btn_style"]
 bg_color = Color(1.0, 0.71, 0.85, 1)
@@ -38,25 +38,35 @@ shadow_size = 5
 shadow_offset = Vector2(0, 3)
 
 [sub_resource type="StyleBoxFlat" id="btn_style_shuffle"]
-bg_color = Color(0.78, 0.72, 1.0, 1)
-corner_radius_top_left = 22
-corner_radius_top_right = 22
-corner_radius_bottom_right = 22
-corner_radius_bottom_left = 22
-shadow_color = Color(0.45, 0.3, 0.6, 0.3)
-shadow_size = 4
-shadow_offset = Vector2(0, 2)
+bg_color = Color(0.5, 0.45, 0.95, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+border_color = Color(1.0, 0.85, 1.0, 0.5)
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+shadow_color = Color(0.25, 0.1, 0.6, 0.45)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
 
 
 [sub_resource type="StyleBoxFlat" id="btn_style_shuffle_hover"]
-bg_color = Color(0.85, 0.8, 1.0, 1)
-corner_radius_top_left = 22
-corner_radius_top_right = 22
-corner_radius_bottom_right = 22
-corner_radius_bottom_left = 22
-shadow_color = Color(0.45, 0.3, 0.6, 0.35)
-shadow_size = 5
-shadow_offset = Vector2(0, 3)
+bg_color = Color(0.6, 0.55, 1.0, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+border_color = Color(1.0, 0.92, 1.0, 0.6)
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+shadow_color = Color(0.3, 0.15, 0.65, 0.55)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="overlay_style"]
 bg_color = Color(0.55, 0.2, 0.6, 0.78)
@@ -132,12 +142,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -140.0
+offset_left = -170.0
 offset_top = 90.0
 offset_right = -12.0
-offset_bottom = 130.0
+offset_bottom = 140.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("btn_style_shuffle")
 theme_override_styles/hover = SubResource("btn_style_shuffle_hover")
 text = "洗牌 (2)"

@@ -35,28 +35,38 @@ func _ready() -> void:
 func _setup_ui() -> void:
 	# Time label badge
 	var time_bg := StyleBoxFlat.new()
-	time_bg.bg_color = Color(0.82, 0.55, 0.9, 0.82)
-	time_bg.set_corner_radius_all(16)
-	time_bg.shadow_color = Color(0.45, 0.2, 0.55, 0.3)
-	time_bg.shadow_size = 3
-	time_bg.shadow_offset = Vector2(0, 2)
-	time_bg.content_margin_left = 16
-	time_bg.content_margin_right = 16
-	time_bg.content_margin_top = 8
-	time_bg.content_margin_bottom = 8
+	time_bg.bg_color = Color(0.65, 0.35, 0.85, 0.88)
+	time_bg.border_color = Color(1.0, 0.85, 1.0, 0.45)
+	time_bg.set_corner_radius_all(20)
+	time_bg.shadow_color = Color(0.3, 0.1, 0.5, 0.45)
+	time_bg.shadow_size = 6
+	time_bg.shadow_offset = Vector2(0, 3)
+	time_bg.border_width_left = 2
+	time_bg.border_width_right = 2
+	time_bg.border_width_top = 2
+	time_bg.border_width_bottom = 2
+	time_bg.content_margin_left = 20
+	time_bg.content_margin_right = 20
+	time_bg.content_margin_top = 10
+	time_bg.content_margin_bottom = 10
 	_time_label.add_theme_stylebox_override("normal", time_bg)
 
 	# Score label badge
 	var score_bg := StyleBoxFlat.new()
-	score_bg.bg_color = Color(0.82, 0.55, 0.9, 0.82)
-	score_bg.set_corner_radius_all(16)
-	score_bg.shadow_color = Color(0.45, 0.2, 0.55, 0.3)
-	score_bg.shadow_size = 3
-	score_bg.shadow_offset = Vector2(0, 2)
-	score_bg.content_margin_left = 16
-	score_bg.content_margin_right = 16
-	score_bg.content_margin_top = 8
-	score_bg.content_margin_bottom = 8
+	score_bg.bg_color = Color(1.0, 0.6, 0.2, 0.85)
+	score_bg.border_color = Color(1.0, 0.9, 0.6, 0.5)
+	score_bg.set_corner_radius_all(20)
+	score_bg.shadow_color = Color(0.6, 0.3, 0.05, 0.4)
+	score_bg.shadow_size = 6
+	score_bg.shadow_offset = Vector2(0, 3)
+	score_bg.border_width_left = 2
+	score_bg.border_width_right = 2
+	score_bg.border_width_top = 2
+	score_bg.border_width_bottom = 2
+	score_bg.content_margin_left = 20
+	score_bg.content_margin_right = 20
+	score_bg.content_margin_top = 10
+	score_bg.content_margin_bottom = 10
 	_score_label.add_theme_stylebox_override("normal", score_bg)
 
 

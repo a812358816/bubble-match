@@ -9,13 +9,13 @@ const BUBBLE_SCENE := preload("res://src/gameplay/bubble.tscn")
 
 @export var grid_cols: int = 6
 @export var grid_rows: int = 8
-@export var max_bubble_size: float = 180.0
-@export var min_bubble_size: float = 50.0
+@export var max_bubble_size: float = 400.0
+@export var min_bubble_size: float = 60.0
 @export var min_match: int = 3
 @export var offset_x: float = 16.0
 @export var offset_y: float = 16.0
 @export var round_seconds: float = 60.0
-@export var spacing_factor: float = 0.62
+@export var spacing_factor: float = 0.21
 
 var _actual_bubble_size: float = 80.0
 
