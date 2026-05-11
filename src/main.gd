@@ -105,11 +105,11 @@ func _on_restart_pressed() -> void:
 
 
 func _on_score_changed(new_score: int) -> void:
-	_score_label.text = "%d 分" % new_score
+	_score_label.text = "%d pts" % new_score
 
 
 func _on_time_updated(seconds: int) -> void:
-	_time_label.text = "%d 秒" % seconds
+	_time_label.text = "%ds" % seconds
 
 	if _time_pulse_tween and _time_pulse_tween.is_valid():
 		_time_pulse_tween.kill()
